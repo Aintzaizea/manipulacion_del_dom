@@ -54,22 +54,38 @@ const arrayGaleria = [
     }
 ];
 
-
-
-
-
 //FUNCIONES
 
 //foto aleatoria del header
-const indiceAleatorio = Math.floor(Math.random()* arrayHeader.length);
+const indiceAleatorio = Math.floor(Math.random() * arrayHeader.length);
 const fotoHeaderAleatoria = arrayHeader[indiceAleatorio];
 imagenCabecera.src = fotoHeaderAleatoria;
 
 //aquí empiezo con la galería y sus imágenes
-arrayGaleria.forEach(function(foto){
-    const divTarjeta = document.createElement("div")
-    const imagenTarjeta = document.createElement("img")
-    imagenTarjeta.src = foto.imagen;
-    imagenTarjeta.alt = foto.alt;
-});
+function imgGaleria() {
+    arrayGaleria.forEach(function (foto) {
+        const divTarjeta = document.createElement("div")
+        const imagenTarjeta = document.createElement("img")
+        const tituloTarjeta = document.createElement("h2")
+        const descripcionTarjeta = document.createElement("p")
+        imagenTarjeta.src = foto.imagen;
+        imagenTarjeta.alt = foto.alt;
+        imagenTarjeta.titulo = foto.titulo;
+        imagenTarjeta.descripcion = foto.descripcion;
+        tituloTarjeta.textContent = `${foto.titulo}`
+        descripcionTarjeta.textContent = `${foto.descripcion}`
+        divTarjeta.append(imagenTarjeta);
+        divTarjeta.append(tituloTarjeta);
+        divTarjeta.append(descripcionTarjeta);
+        contenedorGaleria.append(divTarjeta);
+    });
+};
+
+
+//LLAMADAS A FUNCIONES
+imgGaleria();
+
+
+
+
 
